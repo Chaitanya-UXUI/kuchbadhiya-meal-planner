@@ -682,25 +682,27 @@ export default function App() {
       </div>
 
 
-      <nav className="fixed bottom-0 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:right-[calc(50%-23rem)] left-0 lg:left-auto right-0 z-50 px-0 lg:px-0">
-        <div className="flex lg:flex-col items-center justify-around lg:justify-center lg:gap-12 h-16 lg:h-auto lg:w-16 w-full lg:py-10 bg-ink border-t-2 lg:border-2 border-white/10 lg:rounded-full shadow-[0_-10px_40px_rgba(0,0,0,0.3)] lg:shadow-none">
-          <NavButton 
-            active={activeTab === 'family'} 
-            onClick={() => setActiveTab('family')}
-            icon={<Users size={28} strokeWidth={2.5} />}
-          />
-          <NavButton 
-            active={activeTab === 'kitchen'} 
-            onClick={() => setActiveTab('kitchen')}
-            icon={<ChefHat size={28} strokeWidth={2.5} />}
-          />
-          <NavButton 
-            active={activeTab === 'setup'} 
-            onClick={() => setActiveTab('setup')}
-            icon={<Key size={28} strokeWidth={2.5} />}
-          />
-        </div>
-      </nav>
+      {!showApiKeySetup && (
+        <nav className="fixed bottom-0 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:right-[calc(50%-23rem)] left-0 lg:left-auto right-0 z-50 px-0 lg:px-0">
+          <div className="flex lg:flex-col items-center justify-around lg:justify-center lg:gap-12 h-16 lg:h-auto lg:w-16 w-full lg:py-10 bg-ink border-t-2 lg:border-2 border-white/10 lg:rounded-full shadow-[0_-10px_40px_rgba(0,0,0,0.3)] lg:shadow-none">
+            <NavButton 
+              active={activeTab === 'family'} 
+              onClick={() => setActiveTab('family')}
+              icon={<Users size={28} strokeWidth={2.5} />}
+            />
+            <NavButton 
+              active={activeTab === 'kitchen'} 
+              onClick={() => setActiveTab('kitchen')}
+              icon={<ChefHat size={28} strokeWidth={2.5} />}
+            />
+            <NavButton 
+              active={activeTab === 'setup'} 
+              onClick={() => setActiveTab('setup')}
+              icon={<Key size={28} strokeWidth={2.5} />}
+            />
+          </div>
+        </nav>
+      )}
     </div>
   );
 }
