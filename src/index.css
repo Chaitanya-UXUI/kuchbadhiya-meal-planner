@@ -85,3 +85,14 @@
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Force light mode regardless of system preference */
+@media (prefers-color-scheme: dark) {
+  html, body, #root, .min-h-screen {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  * {
+    scrollbar-color: #1a1a1a #ffffff !important;
+  }
+}
