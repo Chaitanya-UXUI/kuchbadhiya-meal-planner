@@ -1,6 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 
+/* Force light theme regardless of OS or .dark class */
+:root {
+  color-scheme: light;
+  --color-brand-pink: #FF2D8B;
+  --color-brand-yellow: #FFE600;
+  --color-brand-blue: #00BFFF;
+  --color-brand-orange: #FF7043;
+  --color-ink: #1a1a1a;
+  --color-paper: #ffffff;
+  --color-paper-dim: #FFFDE7;
+}
+
+.dark {
+  color-scheme: light;
+}
+
 @theme {
   --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Archivo Black", sans-serif;

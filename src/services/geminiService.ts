@@ -28,7 +28,10 @@ export async function generateFamilyMealPlan(
 
     Follow these rules:
     - Prioritize high-protein vegan Indian foods (dal, chana, rajma, soy chunks, tofu, peanuts).
-    - IMPORTANT: Use Romanized Hindi names for all dish names and ingredients (e.g., use "Pyaz" instead of "Onion", "Palak Paneer" (tofu version) instead of "Spinach & Tofu Curry", "Aloo Matar" instead of "Potato & Pea Curry").
+    - LANGUAGE: Always use HINGLISH for dish names, ingredients, reasons, and recipe steps.
+    - INGREDIENTS: Use Romanized Hindi names for all dish names and ingredients (e.g., "Pyaz" instead of "Onion", "Aloo" instead of "Potato").
+    - RECIPE STEPS: Write steps in clear Hinglish (e.g., "Kadhai mein tel garam karein", "Sare ingredients ko achhe se mix karein").
+    - PORTIONS: Keep portions description in English for clarity (e.g., "1 piece", "50g").
     - Keep recipes SAME for the whole family, but adjust PORTIONS (quantities) individually for each member based on their needs.
     - Provide EXACTLY 3 dish options for each meal (breakfast, lunch, snack, dinner).
     - Provide simple recipe steps (max 5 steps).
@@ -218,5 +221,5 @@ export async function generateFamilyMealPlan(
     },
   });
 
-  return JSON.parse(response.text);
+  return JSON.parse(response.text || '{}');
 }

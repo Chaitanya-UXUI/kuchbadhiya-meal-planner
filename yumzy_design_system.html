@@ -1,0 +1,571 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Nunito:wght@400;700;900&display=swap');
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body, .ds-root {
+    font-family: 'Nunito', sans-serif;
+    background: transparent;
+  }
+
+  .ds-root {
+    padding: 2rem 1.5rem;
+    max-width: 700px;
+  }
+
+  .stamp {
+    display: inline-block;
+    border: 3px dashed currentColor;
+    border-radius: 4px;
+    padding: 2px 10px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1.5px;
+    background: repeating-linear-gradient(90deg, #ddd 0, #ddd 6px, transparent 6px, transparent 12px);
+  }
+
+  .brand-name {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #FF2D8B 0%, #FFE600 60%, #00BFFF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .tagline {
+    font-size: 13px;
+    font-weight: 700;
+    color: #888;
+    margin-top: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  /* Color swatches */
+  .swatches {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+
+  .swatch-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .swatch {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    box-shadow: 0 0 0 2.5px rgba(0,0,0,0.12);
+    position: relative;
+  }
+
+  .swatch-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    text-align: center;
+  }
+  .swatch-hex {
+    font-size: 10px;
+    color: #aaa;
+    font-weight: 400;
+  }
+
+  /* Typography row */
+  .type-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .type-specimen {
+    padding: 12px 16px;
+    border-radius: 10px;
+    background: #fff;
+    border: 2px solid #eee;
+  }
+
+  .type-tag {
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #bbb;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* UI Components */
+  .comp-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+  }
+
+  .btn-primary {
+    background: #FF2D8B;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    cursor: pointer;
+    outline: 3.5px solid #FF2D8B;
+    outline-offset: 3px;
+    transform: rotate(-1deg);
+    transition: transform 0.15s;
+  }
+
+  .btn-secondary {
+    background: #FFE600;
+    color: #1a1a1a;
+    border: 3px solid #1a1a1a;
+    border-radius: 50px;
+    padding: 9px 22px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 900;
+    font-size: 14px;
+    cursor: pointer;
+    transform: rotate(1deg);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: #00BFFF;
+    border: 3px dashed #00BFFF;
+    border-radius: 50px;
+    padding: 9px 22px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .tag-sticker {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 900;
+    border: 2.5px solid transparent;
+    transform: rotate(-2deg);
+  }
+
+  /* Menu card */
+  .menu-card {
+    background: #fff;
+    border: 3px solid #1a1a1a;
+    border-radius: 18px;
+    padding: 14px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .menu-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: repeating-linear-gradient(90deg, #FF2D8B 0, #FF2D8B 20px, #FFE600 20px, #FFE600 40px, #00BFFF 40px, #00BFFF 60px);
+  }
+
+  .card-emoji {
+    font-size: 36px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .card-title {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 16px;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: #777;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+
+  .card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .card-price {
+    font-family: 'Archivo Black', sans-serif;
+    font-size: 20px;
+    color: #FF2D8B;
+  }
+
+  .add-btn {
+    background: #1a1a1a;
+    color: #FFE600;
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    font-weight: 900;
+    cursor: pointer;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  /* Input */
+  .ds-input {
+    border: 3px solid #1a1a1a;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    outline: none;
+    width: 220px;
+    background: #FFFDE7;
+    color: #1a1a1a;
+  }
+  .ds-input::placeholder {
+    color: #bbb;
+    font-weight: 400;
+  }
+
+  /* Badge strip */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 50px;
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.04em;
+  }
+
+  /* Spacing & shadow tokens row */
+  .token-row {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+
+  .token-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .token-box {
+    background: #FF2D8B;
+    border-radius: 6px;
+  }
+
+  .token-label {
+    font-size: 10px;
+    color: #999;
+    font-weight: 700;
+  }
+
+  .rule-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .rule-item {
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .rule-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 5px;
+  }
+  .rule-text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.5;
+  }
+  .rule-text strong {
+    font-weight: 900;
+    color: #1a1a1a;
+  }
+
+  .section-gap { margin-bottom: 2rem; }
+
+  .cutout-box {
+    border: 3px solid #1a1a1a;
+    border-radius: 16px;
+    padding: 14px 18px;
+    background: #fff;
+    position: relative;
+  }
+
+  .cutout-box .corner-snip {
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+    width: 22px;
+    height: 22px;
+    background: var(--color-background-tertiary, #f5f5f5);
+    border-top: 3px solid #1a1a1a;
+    border-left: 3px solid #1a1a1a;
+    border-bottom-right-radius: 14px;
+  }
+</style>
+
+<div class="ds-root">
+
+  <!-- Header -->
+  <div style="display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:2rem; flex-wrap:wrap; gap:10px;">
+    <div>
+      <div class="brand-name">YUMZY</div>
+      <div class="tagline">Menu Maker · Design System v1.0</div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:5px; align-items:flex-end;">
+      <span class="stamp" style="color:#FF2D8B; border-color:#FF2D8B;">Candy Pop</span>
+      <span class="stamp" style="color:#1a1a1a; border-color:#1a1a1a;">Handcrafted</span>
+      <span class="stamp" style="color:#00BFFF; border-color:#00BFFF;">Home Food</span>
+    </div>
+  </div>
+
+  <!-- Colours -->
+  <div class="section-gap">
+    <div class="section-label">Colour Palette</div>
+    <div class="swatches">
+      <div class="swatch-group">
+        <div class="swatch" style="background:#FF2D8B;"></div>
+        <div class="swatch-label">Hot Pink</div>
+        <div class="swatch-hex">#FF2D8B</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#FFE600;"></div>
+        <div class="swatch-label">Zest Yellow</div>
+        <div class="swatch-hex">#FFE600</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#00BFFF;"></div>
+        <div class="swatch-label">Sky Blue</div>
+        <div class="swatch-hex">#00BFFF</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#FF7043;"></div>
+        <div class="swatch-label">Chilli Coral</div>
+        <div class="swatch-hex">#FF7043</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#1a1a1a;"></div>
+        <div class="swatch-label">Inkwell</div>
+        <div class="swatch-hex">#1A1A1A</div>
+      </div>
+      <div class="swatch-group">
+        <div class="swatch" style="background:#FFFDE7; border: 2.5px solid #eee;"></div>
+        <div class="swatch-label">Butter Cream</div>
+        <div class="swatch-hex">#FFFDE7</div>
+      </div>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+      <span class="badge" style="background:#FF2D8B22; color:#B5005F;">Primary — Call to action, price tags, highlights</span>
+      <span class="badge" style="background:#FFE60033; color:#7A6B00;">Accent — Cards, backgrounds, selection states</span>
+      <span class="badge" style="background:#00BFFF22; color:#006B99;">Info — Tags, categories, links</span>
+    </div>
+  </div>
+
+  <!-- Typography -->
+  <div class="section-gap">
+    <div class="section-label">Typography</div>
+    <div class="type-row">
+      <div class="type-specimen">
+        <span class="type-tag">Display / Brand — Archivo Black</span>
+        <div style="font-family:'Archivo Black',sans-serif; font-size:28px; color:#1a1a1a; line-height:1;">Mama's Dal Tadka</div>
+      </div>
+      <div class="type-specimen">
+        <span class="type-tag">Heading — Nunito 900</span>
+        <div style="font-family:'Nunito',sans-serif; font-weight:900; font-size:20px; color:#1a1a1a;">Section: Comfort Bowls</div>
+      </div>
+      <div class="type-specimen">
+        <span class="type-tag">Body — Nunito 400</span>
+        <div style="font-family:'Nunito',sans-serif; font-weight:400; font-size:14px; color:#555; line-height:1.6;">Slow-cooked lentils tempered with ghee, cumin & house spices. Served with warm roti. A proper home meal.</div>
+      </div>
+      <div class="type-specimen">
+        <span class="type-tag">Price / Bold Accent — Archivo Black + Hot Pink</span>
+        <div style="font-family:'Archivo Black',sans-serif; font-size:22px; color:#FF2D8B;">₹180 &nbsp;<span style="font-size:13px; color:#aaa; font-family:'Nunito',sans-serif; font-weight:400;">per serving</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- UI Components -->
+  <div class="section-gap">
+    <div class="section-label">Buttons & Tags</div>
+    <div class="comp-grid" style="margin-bottom:14px;">
+      <button class="btn-primary">Add to Menu</button>
+      <button class="btn-secondary">Preview</button>
+      <button class="btn-ghost">+ New Section</button>
+    </div>
+    <div style="display:flex; gap:10px; flex-wrap:wrap;">
+      <span class="tag-sticker" style="background:#FF2D8B22; color:#B5005F; border-color:#FF2D8B;">Spicy</span>
+      <span class="tag-sticker" style="background:#00BFFF22; color:#006B99; border-color:#00BFFF; transform:rotate(2deg);">Vegan</span>
+      <span class="tag-sticker" style="background:#FFE60055; color:#7A6B00; border-color:#FFE600; transform:rotate(-1deg);">Chef's Pick</span>
+      <span class="tag-sticker" style="background:#FF704322; color:#B84000; border-color:#FF7043; transform:rotate(1.5deg);">Gluten Free</span>
+    </div>
+  </div>
+
+  <!-- Menu Card Sample -->
+  <div class="section-gap">
+    <div class="section-label">Menu Item Card</div>
+    <div style="display:flex; gap:14px; flex-wrap:wrap;">
+      <div class="menu-card" style="max-width:200px;">
+        <span class="card-emoji">🥣</span>
+        <div class="card-title">Rajma Chawal</div>
+        <div class="card-desc">Kidney beans slow-cooked, served over steamed basmati. Soul food at its best.</div>
+        <div style="display:flex; gap:5px; margin-bottom:10px; flex-wrap:wrap;">
+          <span class="tag-sticker" style="background:#FF2D8B22; color:#B5005F; border-color:#FF2D8B; font-size:10px; padding:3px 8px; transform:rotate(-1.5deg);">Spicy</span>
+          <span class="tag-sticker" style="background:#00BFFF22; color:#006B99; border-color:#00BFFF; font-size:10px; padding:3px 8px; transform:rotate(1deg);">Vegan</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-price">₹160</span>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+      <div class="menu-card" style="max-width:200px; background:#FFFDE7;">
+        <span class="card-emoji">🍵</span>
+        <div class="card-title">Masala Chai</div>
+        <div class="card-desc">Ginger, cardamom & cinnamon. Brewed strong, served hot in a kulhad.</div>
+        <div style="display:flex; gap:5px; margin-bottom:10px;">
+          <span class="tag-sticker" style="background:#FFE60055; color:#7A6B00; border-color:#FFE600; font-size:10px; padding:3px 8px;">Chef's Pick</span>
+        </div>
+        <div class="card-footer">
+          <span class="card-price">₹60</span>
+          <button class="add-btn">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="section-gap">
+    <div class="section-label">Form Input</div>
+    <div style="display:flex; gap:12px; align-items:center; flex-wrap:wrap;">
+      <input class="ds-input" type="text" placeholder="Dish name..." />
+      <input class="ds-input" type="text" placeholder="₹ Price" style="width:110px;" />
+    </div>
+  </div>
+
+  <!-- Spacing Tokens -->
+  <div class="section-gap">
+    <div class="section-label">Spacing Tokens</div>
+    <div class="token-row">
+      <div class="token-block">
+        <div class="token-box" style="width:8px; height:8px;"></div>
+        <div class="token-label">xs · 4px</div>
+      </div>
+      <div class="token-block">
+        <div class="token-box" style="width:14px; height:14px;"></div>
+        <div class="token-label">sm · 8px</div>
+      </div>
+      <div class="token-block">
+        <div class="token-box" style="width:22px; height:22px;"></div>
+        <div class="token-label">md · 12px</div>
+      </div>
+      <div class="token-block">
+        <div class="token-box" style="width:32px; height:32px;"></div>
+        <div class="token-label">lg · 16px</div>
+      </div>
+      <div class="token-block">
+        <div class="token-box" style="width:44px; height:44px;"></div>
+        <div class="token-label">xl · 24px</div>
+      </div>
+      <div class="token-block">
+        <div class="token-box" style="width:60px; height:60px;"></div>
+        <div class="token-label">2xl · 32px</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Border Radius -->
+  <div class="section-gap">
+    <div class="section-label">Border Radius</div>
+    <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:flex-end;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div style="width:48px;height:48px;background:#FF2D8B;border-radius:4px;"></div>
+        <div class="token-label">sm · 4px<br>Tags</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div style="width:48px;height:48px;background:#FFE600;border:2.5px solid #1a1a1a;border-radius:12px;"></div>
+        <div class="token-label">md · 12px<br>Inputs</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div style="width:48px;height:48px;background:#00BFFF;border-radius:18px;"></div>
+        <div class="token-label">lg · 18px<br>Cards</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div style="width:48px;height:48px;background:#FF7043;border-radius:50px;"></div>
+        <div class="token-label">pill · 50px<br>Buttons</div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+        <div style="width:48px;height:48px;background:#1a1a1a;border-radius:50%;"></div>
+        <div class="token-label">circle<br>Avatars</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Design Rules -->
+  <div class="section-gap">
+    <div class="section-label">Design Principles</div>
+    <div class="cutout-box">
+      <div class="corner-snip"></div>
+      <div class="rule-row">
+        <div class="rule-item"><div class="rule-dot" style="background:#FF2D8B;"></div><div class="rule-text"><strong>Always slightly rotated.</strong> Buttons, stickers & tags tilt ±1–2°. Nothing is perfectly straight — it's handmade.</div></div>
+        <div class="rule-item"><div class="rule-dot" style="background:#FFE600; border:1.5px solid #ccc;"></div><div class="rule-text"><strong>3px bold borders.</strong> Cards, inputs and key containers have a thick Inkwell (#1a1a1a) border — the cutout collage feel.</div></div>
+        <div class="rule-item"><div class="rule-dot" style="background:#00BFFF;"></div><div class="rule-text"><strong>Dashed = ghost / optional.</strong> Dashed borders signal actions that are optional or additive (ghost buttons, empty states).</div></div>
+        <div class="rule-item"><div class="rule-dot" style="background:#FF7043;"></div><div class="rule-text"><strong>Rainbow stripe as an accent.</strong> The 3-colour repeating stripe (Pink → Yellow → Blue) is used on top of cards, headers and dividers — never as full backgrounds.</div></div>
+        <div class="rule-item"><div class="rule-dot" style="background:#1a1a1a;"></div><div class="rule-text"><strong>Emoji as illustration.</strong> Food emojis replace custom icons on menu cards — fast, universal, and delightfully home-y.</div></div>
+        <div class="rule-item"><div class="rule-dot" style="background:#888;"></div><div class="rule-text"><strong>Butter Cream for warmth.</strong> Use #FFFDE7 as an alternate card background to break monotony — like a sticky note on the fridge.</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>

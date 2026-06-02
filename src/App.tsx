@@ -24,6 +24,7 @@ import {
 } from 'lucide-react';
 import { FamilyMember, FamilyMealPlanResponse, FamilyDishOption } from './types.ts';
 import { generateFamilyMealPlan } from './services/geminiService.ts';
+import { Analytics } from "@vercel/analytics/react"
 
 const INGREDIENT_POOL = {
   proteins: ['Moong Dal', 'Toor Dal', 'Chana', 'Rajma', 'Soy Chunks', 'Paneer', 'Dahi', 'Moongphali', 'Kabuli Chana', 'Masoor Dal', 'Urad Dal', 'Matar'],
@@ -99,7 +100,6 @@ export default function App() {
 
   useEffect(() => {
     localStorage.setItem('family_members', JSON.stringify(members));
-    localStorage.setItem('has_visited', 'true');
   }, [members]);
 
   useEffect(() => {
@@ -139,6 +139,11 @@ export default function App() {
   const saveApiKey = (key: string) => {
     setApiKey(key);
     localStorage.setItem('gemini_api_key', key);
+    const hasVisited = localStorage.getItem('has_visited');
+    if (!hasVisited) {
+      localStorage.setItem('has_visited', 'true');
+      setActiveTab('family');
+    }
     setShowApiKeySetup(false);
   };
 
@@ -222,6 +227,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-paper pt-0 pb-32">
+      <Analytics />
       <div className="max-w-2xl mx-auto px-4 py-8 md:px-6 md:py-12 lg:py-20 lg:pr-24">
         <div className="stripe-accent" />
         
@@ -682,7 +688,7 @@ export default function App() {
       </div>
 
 
-      {!showApiKeySetup && (
+      {!showApiKeySetup && localStorage.getItem('has_visited') && (
         <nav className="fixed bottom-0 lg:bottom-auto lg:top-1/2 lg:-translate-y-1/2 lg:right-[calc(50%-23rem)] left-0 lg:left-auto right-0 z-50 px-0 lg:px-0">
           <div className="flex lg:flex-col items-center justify-around lg:justify-center lg:gap-12 h-16 lg:h-auto lg:w-16 w-full lg:py-10 bg-ink border-t-2 lg:border-2 border-white/10 lg:rounded-full shadow-[0_-10px_40px_rgba(0,0,0,0.3)] lg:shadow-none">
             <NavButton 
